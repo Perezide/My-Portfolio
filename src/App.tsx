@@ -11,7 +11,7 @@ function App() {
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <Navbar />
       <Hero />
-      <Projects />
+      <Projects /> {/* This should have id="projects" */}
       <About />
       <Contact />
       <Footer />

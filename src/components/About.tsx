@@ -1,36 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Smartphone, Cpu, Rocket, Heart } from 'lucide-react';
+import { Code2, Smartphone, Rocket, Heart } from 'lucide-react';
 
 const About: React.FC = () => {
   const milestones = [
     {
-      year: "2019",
+      year: "2020",
       title: "The Beginning",
       description: "Started my journey with web development, building my first websites and discovering the power of code to create digital experiences.",
       icon: Code2,
       color: "blue"
     },
     {
-      year: "2020-2022",
+      year: "2021-2024",
       title: "Expanding Horizons",
-      description: "Dived into full-stack development, working on diverse projects across medical, e-commerce, and NGO sectors. Built platforms that served real users and solved actual problems.",
+      description: "Dived into software development, working on diverse projects across Education, Fashion, Events, Restaurants, Outreach, Medical, E-commerce, Communication, AI Powered, Productivity and NGO sectors. Built platforms that served real users and solved actual problems.",
       icon: Heart,
       color: "purple"
     },
     {
-      year: "2023",
+      year: "2025",
       title: "Mobile Frontier",
-      description: "Expanded into mobile development, bringing the same passion for user experience to handheld devices. Started building cross-platform applications.",
+      description: "Expanded into mobile development, bringing the same passion for user experience and intelligent solutions. Started building cross-platform applications.",
       icon: Smartphone,
       color: "green"
-    },
-    {
-      year: "Now & Beyond",
-      title: "Intelligent Systems",
-      description: "Aspiring to build efficient and intelligent systems in AI, IoT, Telecommunications, and Electronic Devices. Focused on creating impactful startups and global enterprise solutions.",
-      icon: Rocket,
-      color: "orange"
     }
   ];
 
@@ -112,9 +105,9 @@ const About: React.FC = () => {
           className="mt-16 text-center"
         >
           <div className="liquid-glass rounded-3xl p-8 max-w-4xl mx-auto">
-            <Cpu className="w-12 h-12 text-blue-600 dark:text-blue-400 mx-auto mb-4" />
+            <Rocket className="w-12 h-12 text-orange-600 dark:text-orange-400 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-              Current Focus & Aspirations
+              Now & Beyond
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               "I'm driven by building platforms and systems that are more efficient. Currently aspiring to 
