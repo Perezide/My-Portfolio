@@ -189,84 +189,84 @@ const Projects: React.FC = () => {
     'coming soon': { label: 'Coming Soon', color: 'bg-purple-500', textColor: 'text-purple-700 dark:text-purple-400' }
   };
 
-// Simple infinite scroll
-useEffect(() => {
-  const slider = sliderRef.current;
-  if (!slider) return;
+  // Simple infinite scroll
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
 
-  let animationFrame: number;
-  let position = 0;
-  const speed = 0.5;
+    let animationFrame: number;
+    let position = 0;
+    const speed = 0.5;
 
-  const animate = () => {
-    position -= speed;
-    
-    if (position <= -slider.scrollWidth / 2) {
-      position = 0;
-    }
-    
-    slider.style.transform = `translateX(${position}px)`;
-    animationFrame = requestAnimationFrame(animate);
-  };
+    const animate = () => {
+      position -= speed;
+      
+      if (position <= -slider.scrollWidth / 2) {
+        position = 0;
+      }
+      
+      slider.style.transform = `translateX(${position}px)`;
+      animationFrame = requestAnimationFrame(animate);
+    };
 
-  animate();
+    animate();
 
-  return () => {
-    cancelAnimationFrame(animationFrame);
-  };
-}, []);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, []);
 
-const filteredProjects = activeCategory === 'all' 
-  ? projects 
-  : projects.filter(project => project.category === activeCategory);
+  const filteredProjects = activeCategory === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
 
-const duplicatedCategories = [...categories, ...categories];
+  const duplicatedCategories = [...categories, ...categories];
 
-return (
-  <section id="projects" className="py-20 bg-white dark:bg-gray-900"> {/* Make sure ID is 'projects' */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-          Featured Projects
-        </h2>
-        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          5 years of building diverse solutions across multiple industries
-        </p>
-      </motion.div>
+  return (
+    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Featured Projects
+          </h2>
+          <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
+            5 years of building diverse solutions across multiple industries
+          </p>
+        </motion.div>
 
-      {/* Categories Slider */}
-      <div className="mb-12 overflow-hidden">
-        <div className="relative">
-          <div
-            ref={sliderRef}
-            className="flex space-x-4 py-4"
-            style={{ willChange: 'transform' }}
-          >
-            {duplicatedCategories.map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <button
-                  key={`${category.id}-${index}`}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-2xl whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
-                    activeCategory === category.id
-                      ? 'bg-blue-500 text-white shadow-lg'
-                      : 'glass-effect text-gray-700 dark:text-gray-300 hover:bg-blue-500/20'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="font-medium">{category.label}</span>
-                </button>
-              );
-            })}
+        {/* Categories Slider */}
+        <div className="mb-12 overflow-hidden">
+          <div className="relative">
+            <div
+              ref={sliderRef}
+              className="flex space-x-4 py-4"
+              style={{ willChange: 'transform' }}
+            >
+              {duplicatedCategories.map((category, index) => {
+                const Icon = category.icon;
+                return (
+                  <button
+                    key={`${category.id}-${index}`}
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`flex items-center space-x-2 px-6 py-3 rounded-2xl whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
+                      activeCategory === category.id
+                        ? 'bg-blue-500 text-white shadow-lg'
+                        : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-300 hover:bg-blue-500/20'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span className="font-medium">{category.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -281,14 +281,14 @@ return (
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className={`liquid-glass rounded-2xl p-6 border border-white/20 ${
+                className={`bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg ${
                   project.featured ? 'ring-2 ring-blue-500/50' : ''
                 }`}
               >
                 {/* Header with Icon and Actions */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 rounded-xl glass-effect">
+                    <div className="p-2 rounded-xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
                       <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div className={`px-2 py-1 rounded-full text-xs font-medium ${progress.textColor} bg-opacity-20`}>
@@ -296,11 +296,11 @@ return (
                     </div>
                   </div>
                   <div className="flex space-x-2">
-                    <button className="p-2 rounded-lg glass-effect hover:scale-110 transition-transform">
-                      <Github className="w-4 h-4" />
+                    <button className="p-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:scale-110 transition-transform">
+                      <Github className="w-4 h-4 text-gray-700 dark:text-gray-300" />
                     </button>
-                    <button className="p-2 rounded-lg glass-effect hover:scale-110 transition-transform">
-                      <ExternalLink className="w-4 h-4" />
+                    <button className="p-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:scale-110 transition-transform">
+                      <ExternalLink className="w-4 h-4 text-gray-700 dark:text-gray-300" />
                     </button>
                   </div>
                 </div>
@@ -310,14 +310,14 @@ return (
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-400 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
                 
                 {/* Features List */}
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Key Features:</h4>
-                  <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                  <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-300 mb-2">Key Features:</h4>
+                  <ul className="text-xs text-gray-700 dark:text-gray-400 space-y-1">
                     {project.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
                         <div className={`w-1 h-1 rounded-full ${progress.color} mr-2`}></div>
@@ -340,7 +340,7 @@ return (
                 </div>
                 
                 {/* Progress Indicator */}
-                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
                   <span>Status:</span>
                   <div className="flex items-center space-x-2">
                     <div className={`w-2 h-2 rounded-full ${progress.color}`}></div>
@@ -359,7 +359,7 @@ return (
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
               No projects found in this category.
             </p>
           </motion.div>

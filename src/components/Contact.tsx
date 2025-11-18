@@ -11,9 +11,7 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
-    // You can integrate with a service like EmailJS or your backend
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,10 +30,10 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Let's Connect
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
             Ready to build something amazing together? Get in touch!
           </p>
         </motion.div>
@@ -52,7 +50,7 @@ const Contact: React.FC = () => {
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
                 Let's Start a Conversation
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-400 text-lg leading-relaxed">
                 Whether you're looking to collaborate on a project, discuss new opportunities, 
                 or just want to talk tech, I'd love to hear from you. Let's create something 
                 impactful together.
@@ -62,31 +60,31 @@ const Contact: React.FC = () => {
             {/* Contact Methods */}
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
-                <div className="p-3 rounded-2xl glass-effect">
+                <div className="p-3 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
                   <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">Email</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Email</p>
                   <p className="text-gray-800 dark:text-white font-semibold">perezidekonboye@gmail.com</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="p-3 rounded-2xl glass-effect">
+                <div className="p-3 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
                   <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
                 </div>
                 <div>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">Phone</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Phone</p>
                   <p className="text-gray-800 dark:text-white font-semibold">+234 (903) 822-8894</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="p-3 rounded-2xl glass-effect">
+                <div className="p-3 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
                   <MapPin className="w-6 h-6 text-red-600 dark:text-red-400" />
                 </div>
                 <div>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">Location</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Location</p>
                   <p className="text-gray-800 dark:text-white font-semibold">Available Worldwide</p>
                 </div>
               </div>
@@ -104,7 +102,7 @@ const Contact: React.FC = () => {
                   href={social.href}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-3 rounded-2xl glass-effect hover:bg-blue-500/20 transition-colors"
+                  className="p-3 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
@@ -119,10 +117,10 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <form onSubmit={handleSubmit} className="liquid-glass rounded-3xl p-8">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg">
               <div className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-800 dark:text-gray-300 mb-2">
                     Full Name
                   </label>
                   <input
@@ -132,13 +130,13 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-2xl glass-effect border border-white/20 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-600 dark:placeholder-gray-400"
                     placeholder="Enter your full name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-800 dark:text-gray-300 mb-2">
                     Email Address
                   </label>
                   <input
@@ -148,13 +146,13 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-2xl glass-effect border border-white/20 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-600 dark:placeholder-gray-400"
                     placeholder="Enter your email address"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-800 dark:text-gray-300 mb-2">
                     Message
                   </label>
                   <textarea
@@ -164,7 +162,7 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-2xl glass-effect border border-white/20 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none"
+                    className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-600 dark:placeholder-gray-400 resize-none"
                     placeholder="Tell me about your project or just say hello..."
                   />
                 </div>
@@ -173,7 +171,7 @@ const Contact: React.FC = () => {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-linear-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-2xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-2xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
                 >
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>

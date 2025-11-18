@@ -68,25 +68,22 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="min-h-screen relative overflow-hidden">
-      {/* Simplified Background */}
+      {/* Light Mode Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Base Gradient - More Subtle */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/50 to-slate-100 dark:from-gray-900 dark:via-blue-900/20 dark:to-gray-800"></div>
+        {/* Base White Gradient */}
+        <div className="absolute inset-0 light-background"></div>
         
-        {/* Single Parallax Layer with Grid Pattern */}
-        <motion.div
-          className="absolute inset-0 opacity-20"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        >
-          {/* Grid Pattern */}
+        {/* Glass Morphism Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-blue-50/30 to-white/10 backdrop-blur-3xl"></div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(100,100,100,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(100,100,100,0.1)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
-        </motion.div>
+        </div>
 
-        {/* Floating Elements - Minimal & Clean */}
+        {/* Floating Glass Elements */}
         <motion.div
-          className="absolute top-1/4 left-1/6 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"
+          className="absolute top-1/4 left-1/6 w-40 h-40 bg-blue-200/30 rounded-full backdrop-blur-xl border border-white/30"
           animate={{ 
             y: [0, -30, 0],
             scale: [1, 1.1, 1]
@@ -94,7 +91,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/3 right-1/5 w-48 h-48 bg-slate-500/10 rounded-full blur-2xl"
+          className="absolute bottom-1/3 right-1/5 w-48 h-48 bg-slate-200/20 rounded-full backdrop-blur-xl border border-white/20"
           animate={{ 
             y: [0, 20, 0],
             scale: [1, 1.05, 1]
@@ -104,8 +101,8 @@ const Hero: React.FC = () => {
 
         {/* Subtle Code Elements */}
         <motion.div
-          className="absolute top-1/3 right-1/4 text-3xl opacity-5 text-blue-600 dark:text-blue-400 font-mono"
-          animate={{ y: [0, -15, 0], opacity: [0.05, 0.1, 0.05] }}
+          className="absolute top-1/3 right-1/4 text-3xl opacity-5 text-blue-400 font-mono"
+          animate={{ y: [0, -15, 0], opacity: [0.03, 0.08, 0.03] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         >
           {"<Code/>"}
@@ -128,7 +125,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-6"
             >
-              <span className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-medium">
+              <span className="text-lg md:text-xl text-gray-800 dark:text-slate-300 font-medium">
                 Hello, I'm a
               </span>
             </motion.div>
@@ -148,7 +145,7 @@ const Hero: React.FC = () => {
                     value={customTitle}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyPress}
-                    className="text-2xl md:text-4xl lg:text-5xl font-bold bg-transparent border-b-2 border-blue-500 text-center outline-none bg-gradient-to-r from-slate-700 via-blue-600 to-slate-800 dark:from-slate-300 dark:via-blue-400 dark:to-slate-200 bg-clip-text text-transparent w-full max-w-md"
+                    className="text-2xl md:text-4xl lg:text-5xl font-bold bg-transparent border-b-2 border-blue-500 text-center outline-none bg-gradient-to-r from-gray-800 via-blue-600 to-gray-900 dark:from-slate-300 dark:via-blue-400 dark:to-slate-200 bg-clip-text text-transparent w-full max-w-md"
                     placeholder="Enter your title..."
                   />
                   <motion.button
@@ -166,7 +163,7 @@ const Hero: React.FC = () => {
                   className="cursor-pointer inline-block relative"
                   onClick={handleTitleClick}
                 >
-                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-700 via-blue-600 to-slate-800 dark:from-slate-300 dark:via-blue-400 dark:to-slate-200 bg-clip-text text-transparent min-h-[1.2em] flex justify-center items-center">
+                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-gray-900 dark:from-slate-300 dark:via-blue-400 dark:to-slate-200 bg-clip-text text-transparent min-h-[1.2em] flex justify-center items-center">
                     {titleToDisplay}
                     {/* Blinking cursor when not editing and showCursor is true */}
                     {showCursor && !isEditing && (
@@ -183,7 +180,7 @@ const Hero: React.FC = () => {
                     className="absolute -right-8 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Edit className="w-5 h-5 text-slate-400" />
+                    <Edit className="w-5 h-5 text-gray-500 dark:text-slate-400" />
                   </motion.div>
                 </div>
               )}
@@ -194,7 +191,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 2 }}
-                  className="text-xs text-slate-400 mt-2"
+                  className="text-xs text-gray-500 dark:text-slate-400 mt-2"
                 >
                   Click to edit
                 </motion.div>
@@ -203,12 +200,12 @@ const Hero: React.FC = () => {
             
             {/* Experience Summary */}
             <motion.p 
-              className="text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto"
+              className="text-xl text-gray-700 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <span className="font-semibold text-blue-600 dark:text-blue-400">5 years</span> of experience building 
+              With over <span className="font-semibold text-blue-600 dark:text-blue-400">Half a decade</span> of experience building 
               digital products that solve real problems
             </motion.p>
 
@@ -226,7 +223,7 @@ const Hero: React.FC = () => {
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
-                  className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm border border-white/10"
+                  className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm border border-white/20"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -234,7 +231,7 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 >
                   <item.icon className={`w-4 h-4 ${item.color}`} />
-                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                  <span className="text-sm font-medium text-gray-800 dark:text-slate-300">
                     {item.label}
                   </span>
                 </motion.div>
@@ -243,7 +240,7 @@ const Hero: React.FC = () => {
 
             {/* Specialization */}
             <motion.p
-              className="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed max-w-2xl mx-auto"
+              className="text-lg text-gray-600 dark:text-slate-400 mb-8 leading-relaxed max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
@@ -263,7 +260,7 @@ const Hero: React.FC = () => {
               {[Code2, Cpu, Zap].map((Icon, index) => (
                 <motion.div
                   key={index}
-                  className="p-3 rounded-xl bg-white/5 dark:bg-gray-800/10 border border-white/10"
+                  className="p-3 rounded-xl bg-white/20 dark:bg-gray-800/10 border border-white/20"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   animate={{ 
@@ -276,14 +273,14 @@ const Hero: React.FC = () => {
                     delay: index * 0.3
                   }}
                 >
-                  <Icon className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+                  <Icon className="w-5 h-5 text-gray-700 dark:text-slate-400" />
                 </motion.div>
               ))}
             </motion.div>
 
             {/* Call to Action */}
             <motion.p
-              className="text-base text-slate-400 dark:text-slate-500 max-w-2xl mx-auto mt-8"
+              className="text-base text-gray-500 dark:text-slate-500 max-w-2xl mx-auto mt-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.4 }}

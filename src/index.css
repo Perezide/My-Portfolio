@@ -34,39 +34,107 @@
 
 @layer base {
   :root {
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    /* Light mode - SOLID white backgrounds */
+    --glass-bg: rgba(255, 255, 255, 1);
+    --glass-border: rgba(209, 213, 219, 1);
+    --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --glass-bg-light: rgba(255, 255, 255, 1);
+    --glass-bg-lighter: rgba(255, 255, 255, 1);
   }
   
   .dark {
-    --glass-bg: rgba(0, 0, 0, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    /* Dark mode - navy blue backgrounds */
+    --glass-bg: rgba(15, 23, 42, 1);
+    --glass-border: rgba(30, 41, 59, 1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --glass-bg-light: rgba(15, 23, 42, 1);
+    --glass-bg-lighter: rgba(15, 23, 42, 1);
+  }
+
+  /* Base background styles */
+  .light-background {
+    background: #ffffff;
+  }
+
+  .dark .light-background {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   }
 }
 
 @layer utilities {
+  /* SOLID Background Effects - No Transparency */
   .glass-effect {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-effect-light {
+    background: var(--glass-bg-light);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
   }
 
   .liquid-glass {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
   }
 
-  .parallax-bg {
-    transform: translateZ(-10px) scale(2);
+  /* Solid card styles */
+  .solid-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
-  /* Custom backdrop blur utilities */
+
+  .dark .solid-card {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  /* Solid form styles */
+  .solid-input {
+    background: white;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .solid-input {
+    background: #1e293b;
+    border: 1px solid #374151;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  /* Remove backdrop filters for solid backgrounds */
   .backdrop-blur-xs {
     backdrop-filter: blur(2px);
   }
+
+  .backdrop-blur-glass {
+    backdrop-filter: none;
+  }
+
+  .backdrop-blur-frosted {
+    backdrop-filter: none;
+  }
+
+  /* Text contrast utilities */
+  .text-contrast-light {
+    color: #111827;
+  }
+
+  .text-contrast-medium {
+    color: #374151;
+  }
+
+  .text-contrast-muted {
+    color: #6b7280;
+  }
+}
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }

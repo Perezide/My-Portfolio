@@ -75,7 +75,7 @@ const SectionIndicator: React.FC = () => {
   // Mobile Bottom Indicator with Icons
   return (
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
-      <div className="liquid-glass rounded-2xl px-6 py-3 backdrop-blur-lg border border-white/20 shadow-xl">
+      <div className="glass-effect rounded-2xl px-6 py-3 border border-white/20 shadow-xl">
         <div className="flex space-x-10">
           {sections.map((section) => (
             <motion.button
