@@ -53,10 +53,10 @@ const Projects: React.FC = () => {
       categories: ["events"],
       icon: Calendar,
       tags: ["Events", "Entertainment", "Booking", "Management"],
-      progress: "completed",
+      progress: "rebuilding",
       features: ["Event Creation", "Ticket Booking", "Venue Management", "Real-time Updates"],
       githubUrl: "/",
-      liveUrl: "https://event-handlers-6275c.web.app/",
+      liveUrl: "/",
       featured: true
     },
     {
@@ -108,7 +108,7 @@ const Projects: React.FC = () => {
       featured: true
     },
     {
-      title: "Private Message App",
+      title: "OrangeApples: Private Messaging",
       description: "Secure private messaging application with end-to-end encryption and AI productivity",
       categories: ["communication", "ai", "productivity"],
       icon: MessageCircle,
@@ -128,7 +128,7 @@ const Projects: React.FC = () => {
       progress: "in progress",
       features: ["AI Summary and Review", "Clauses Flagging", "Changes Tracking", "Legal Assistant"],
       githubUrl: "/",
-      liveUrl: "https://chroma-c740d.web.app/",
+      liveUrl: "",
       featured: true
     },
     {
@@ -149,31 +149,31 @@ const Projects: React.FC = () => {
       categories: ["delivery"],
       icon: Truck,
       tags: ["App Recommendation", "Drivers Registration", "Content Discovery"],
-      progress: "completed",
+      progress: "private",
       features: ["OS-Specific Platform Recommendations", "Drivers Profiling", "Analytics Dashboard"],
       githubUrl: "/",
-      liveUrl: "https://courries-878c0.web.app/",
+      liveUrl: "/",
       featured: true
     },
     {
-      title: "SMHOS Workers",
+      title: "Workers Registration",
       description: "Organization management system for worker registration and coordination",
       categories: ["productivity"],
       icon: Building2,
       tags: ["Organization", "Management", "Registration", "Coordination"],
-      progress: "completed",
+      progress: "private",
       features: ["Worker Registration and Management", "Scheduling", "Performance Tracking"],
       githubUrl: "/",
-      liveUrl: "https://smhos-workers.web.app/",
+      liveUrl: "/",
       featured: true
     },
     {
-      title: "RSU Vendors",
+      title: "Vendors",
       description: "Online store platform for university vendors and campus commerce",
       categories: ["ecommerce", "education"],
       icon: ShoppingCart,
       tags: ["Online Store", "University", "Vendors", "Campus Commerce"],
-      progress: "rebuilding",
+      progress: "in progress",
       features: ["Vendor Management", "Order Processing", "Campus Delivery", "Payment Integration"],
       githubUrl: "/",
       liveUrl: "/",
@@ -185,6 +185,7 @@ const Projects: React.FC = () => {
     completed: { label: 'Completed', color: 'bg-green-500', textColor: 'text-green-700 dark:text-green-400' },
     'in progress': { label: 'In Progress', color: 'bg-blue-500', textColor: 'text-blue-700 dark:text-blue-400' },
     rebuilding: { label: 'Rebuilding', color: 'bg-yellow-500', textColor: 'text-yellow-700 dark:text-yellow-400' },
+    private: { label: 'Private', color: 'bg-red-500', textColor: 'text-red-700 dark:text-red-400' },
     'coming soon': { label: 'Coming Soon', color: 'bg-purple-500', textColor: 'text-purple-700 dark:text-purple-400' }
   };
 

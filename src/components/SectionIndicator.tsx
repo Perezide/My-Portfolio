@@ -5,6 +5,7 @@ import { useActiveSection } from '../hooks/useActiveSection';
 
 const SectionIndicator: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
   const { activeSection, scrollToSection } = useActiveSection();
 
   const sections = [
@@ -24,6 +25,35 @@ const SectionIndicator: React.FC = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Check if near footer
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const footer = document.querySelector('footer');
+      
+      if (footer) {
+        const footerTop = footer.offsetTop;
+        const threshold = 100; // Adjust this value to change when it hides
+        
+        // Check if we're near the footer (with some threshold)
+        const nearFooter = scrollPosition > footerTop - threshold;
+        setIsNearFooter(nearFooter);
+      } else {
+        // Fallback: hide when near bottom of page
+        const distanceFromBottom = documentHeight - scrollPosition;
+        setIsNearFooter(distanceFromBottom < 200);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
 
   // Desktop Vertical Indicator
   if (!isMobile) {
@@ -74,7 +104,19 @@ const SectionIndicator: React.FC = () => {
 
   // Mobile Bottom Indicator with Icons
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
+    <motion.div 
+      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden"
+      initial={false}
+      animate={{ 
+        opacity: isNearFooter ? 0 : 1,
+        y: isNearFooter ? 20 : 0
+      }}
+      transition={{ 
+        duration: 0.3,
+        ease: "easeInOut"
+      }}
+      style={{ pointerEvents: isNearFooter ? 'none' : 'auto' }}
+    >
       <div className="bg-white dark:bg-slate-800 rounded-2xl px-6 py-3 border border-gray-200 dark:border-slate-700 shadow-xl">
         <div className="flex space-x-10">
           {sections.map((section) => (
@@ -117,8 +159,8 @@ const SectionIndicator: React.FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default SectionIndicator;
+export default SectionIndicator; 
